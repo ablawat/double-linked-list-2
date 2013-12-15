@@ -3,24 +3,22 @@
 
 int main()
 {
-    Value value1;
-    Value value2;
-    Value value3;
-    
-    value1.number = 1;
-    value2.number = 2;
-    value3.number = 3;
-    
     LinkedListInt **list = LinkedListIntCreate();
+    Value *value;
+    
     
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value1);
+    value = malloc(sizeof(Value));
+    value -> number = 1;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value2);
+    value = malloc(sizeof(Value));
+    value -> number = 2;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
@@ -28,7 +26,9 @@ int main()
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddFirst(list, &value3);
+    value = malloc(sizeof(Value));
+    value -> number = 3;
+    LinkedListIntAddFirst(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
@@ -36,11 +36,15 @@ int main()
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value2);
+    value = malloc(sizeof(Value));
+    value -> number = 2;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value2);
+    value = malloc(sizeof(Value));
+    value -> number = 2;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
@@ -52,15 +56,21 @@ int main()
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value1);
+    value = malloc(sizeof(Value));
+    value -> number = 1;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value2);
+    value = malloc(sizeof(Value));
+    value -> number = 2;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
-    LinkedListIntAddLast(list, &value3);
+    value = malloc(sizeof(Value));
+    value -> number = 3;
+    LinkedListIntAddLast(list, value);
     LinkedListIntPrint(list);
     putchar(10);
     
