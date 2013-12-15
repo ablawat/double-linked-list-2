@@ -23,7 +23,7 @@ int LinkedListIntAddFirst(LinkedListInt **list, Value *value)
     
     if (newValue != NULL)
     {
-        newValue -> value = *value;
+        newValue -> value = value;
         
         if (list[0] == NULL)
         {
@@ -61,7 +61,7 @@ int LinkedListIntAddLast(LinkedListInt **list, Value *value)
     
     if (newValue != NULL)
     {
-        newValue -> value = *value;
+        newValue -> value = value;
         
         if (list[0] == NULL)
         {
@@ -100,7 +100,9 @@ void LinkedListIntRemoveFirst(LinkedListInt **list)
     {
         if (list[0] -> next == NULL)
         {
+            free(list[0] -> value);
             free(list[0]);
+            
             list[0] = NULL;
             list[1] = NULL;
         }
@@ -109,7 +111,9 @@ void LinkedListIntRemoveFirst(LinkedListInt **list)
             tmpValue = list[0] -> next;
             tmpValue -> prev = NULL;
             
+            free(list[0] -> value);
             free(list[0]);
+            
             list[0] = tmpValue;
         }
     }
@@ -125,7 +129,9 @@ void LinkedListIntRemoveLast(LinkedListInt **list)
     {
         if (list[0] -> next == NULL)
         {
+            free(list[1] -> value);
             free(list[1]);
+            
             list[0] = NULL;
             list[1] = NULL;
         }
@@ -134,7 +140,9 @@ void LinkedListIntRemoveLast(LinkedListInt **list)
             tmpValue = list[1] -> prev;
             tmpValue -> next = NULL;
             
+            free(list[1] -> value);
             free(list[1]);
+            
             list[1] = tmpValue;
         }
     }
@@ -150,7 +158,9 @@ void LinkedListIntRemove(LinkedListInt **list, LinkedListInt *toRemove)
     {
         if (list[0] -> next == NULL)
         {
+            free(list[0] -> value);
             free(list[0]);
+            
             list[0] = NULL;
             list[1] = NULL;
         }
@@ -159,7 +169,9 @@ void LinkedListIntRemove(LinkedListInt **list, LinkedListInt *toRemove)
             tmpValue = list[0] -> next;
             tmpValue -> prev = NULL;
             
+            free(list[0] -> value);
             free(list[0]);
+            
             list[0] = tmpValue;
         }
     }
@@ -169,7 +181,9 @@ void LinkedListIntRemove(LinkedListInt **list, LinkedListInt *toRemove)
         {
             if (list[0] -> next == NULL)
             {
+                free(list[1] -> value);
                 free(list[1]);
+                
                 list[0] = NULL;
                 list[1] = NULL;
             }
@@ -178,7 +192,9 @@ void LinkedListIntRemove(LinkedListInt **list, LinkedListInt *toRemove)
                 tmpValue = list[1] -> prev;
                 tmpValue -> next = NULL;
                 
+                free(list[1] -> value);
                 free(list[1]);
+                
                 list[1] = tmpValue;
             }
         }
@@ -186,6 +202,8 @@ void LinkedListIntRemove(LinkedListInt **list, LinkedListInt *toRemove)
         {
             toRemove -> prev -> next = toRemove -> next;
             toRemove -> next -> prev = toRemove -> prev;
+            
+            free(toRemove -> value);
             free(toRemove);
         }
     }
@@ -203,6 +221,8 @@ void LinkedListIntClear(LinkedListInt **list)
     {
         toRemove = tmpValue;
         tmpValue = tmpValue -> next;
+        
+        free(toRemove -> value);
         free(toRemove);
     }
     
@@ -221,7 +241,7 @@ void LinkedListIntPrint(LinkedListInt **list)
     while (tmpValue != NULL)
     {
         printf("-|");
-        printf("%d", tmpValue -> value.number);
+        printf("%d", tmpValue -> value -> number);
         printf("|");
         tmpValue = tmpValue -> next;
     }
@@ -233,7 +253,7 @@ void LinkedListIntPrint(LinkedListInt **list)
     while (tmpValue != NULL)
     {
         printf("|");
-        printf("%d", tmpValue -> value.number);
+        printf("%d", tmpValue -> value -> number);
         printf("|-");
         tmpValue = tmpValue -> prev;
     }

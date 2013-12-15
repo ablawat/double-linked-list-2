@@ -2,7 +2,7 @@
 
     typedef struct linkedListInt
     {
-        Value                   value;
+        Value                   *value;
             
         struct linkedListInt    *next;
         struct linkedListInt    *prev;
