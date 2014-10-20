@@ -1,14 +1,14 @@
 CC     = gcc
 CFLAGS = -O2
 
-test: test.o linked-list-int.o
-	$(CC) $(CFLAGS) -o test test.o linked-list-int.o
+test: test.o linked-list-data.o
+	$(CC) $(CFLAGS) -o test test.o linked-list-data.o
 
 test.o: test.c
 	$(CC) $(CFLAGS) -c -o test.o test.c
 
-linked-list-int.o: linked-list-int.c
-	$(CC) $(CFLAGS) -c -o linked-list-int.o linked-list-int.c
+linked-list-data.o: linked-list-data.c
+	$(CC) $(CFLAGS) -c -o linked-list-data.o linked-list-data.c
 
 clean:
 	rm -f *.o
